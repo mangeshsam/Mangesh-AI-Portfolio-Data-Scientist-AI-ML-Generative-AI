@@ -124,13 +124,13 @@ Answer:"""
 
     response_text = None
     
-    # Priority 1: Gemini (Since HF is blocked via DNS)
-    if GEMINI_API_KEY:
-        response_text = query_gemini(prompt)
-        
-    # Priority 2: Hugging Face (If Gemini fails or is missing)
-    if not response_text and HF_API_KEY:
+    # Priority 1: Hugging Face
+    if HF_API_KEY:
         response_text = query_huggingface(prompt)
+        
+    # Priority 2: Gemini (If Hugging Face fails)
+    if not response_text and GEMINI_API_KEY:
+        response_text = query_gemini(prompt)
         
     # Priority 3: Fallback (If both APIs are blocked or fail)
     if not response_text:
@@ -194,11 +194,11 @@ Question: {req.message}
 Answer:"""
 
     response_text = None
-    if GEMINI_API_KEY:
-        response_text = query_gemini(prompt)
-        
-    if not response_text and HF_API_KEY:
+    if HF_API_KEY:
         response_text = query_huggingface(prompt)
+        
+    if not response_text and GEMINI_API_KEY:
+        response_text = query_gemini(prompt)
     
     if not response_text:
         snippets = [c.strip() for c in context.split("---") if c.strip()]
