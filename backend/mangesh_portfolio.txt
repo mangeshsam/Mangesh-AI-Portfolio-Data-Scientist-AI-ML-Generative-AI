@@ -62,7 +62,6 @@ Kamla Nehru College
 2016 – 2020 · Nagpur
 
 SKILLS
-
 Generative AI & LLM Engineering:
 - Build and deploy AI-powered applications with LLMs, RAG and agents.
 - Skills: Generative AI, LLMs, RAG, AI Agents, LangChain, LangGraph, Prompt Engineering, Embeddings, Vector Databases (ChromaDB / FAISS), Hugging Face, LLM APIs.
